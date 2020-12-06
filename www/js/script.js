@@ -8,7 +8,47 @@ const fileSelector = document.getElementById('file-selector');
 fileSelector.addEventListener('change', (event) => {
     const fileList = event.target.files;
     console.log(fileList);
+
+    readImage(fileList[0], document.getElementById('canvas')); // DEBUG
+    console.log(fileList[0]);
 });
+
+
+/*
+    BubbleView Part
+*/
+
+// On définit les diamètres des cercles pour la bulle et le floutage
+let bubble_radius = 30;
+let blur_radius = 30;
+let clickCount = 0;
+// Tableau des clics
+let clicks = [];
+let canvas = document.getElementById('canvas');
+let current_image = 'img/test.jpg';
+
+// On initialise le canvas avec bubbleview
+bv.setup(current_image, 'canvas', bubble_radius, blur_radius, logClick);
+
+// On adapate la taille du canvas à l'image
+const img = new Image();
+img.onload = function () {
+    canvas.width = this.width;
+    canvas.height = this.height;
+}
+img.src = current_image;
+
+// DEBUG
+document.getElementById('btn_valider').onclick = function () {
+    console.log(clicks);
+};
+
+function logClick(log) {
+    clickCount++;
+    clicks.push(log);
+
+    //resetMonitoring();
+}
 
 function readImage(file, canvas) {
     // Check if the file is an image.
@@ -19,38 +59,28 @@ function readImage(file, canvas) {
 
     const reader = new FileReader();
     reader.addEventListener('load', (event) => {
-        canvas.src = event.target.result;
+        current_image = event.target.result;
+        resetBubbleView();
     });
     reader.readAsDataURL(file);
 }
 
-/*
-    BubbleView Part
-*/
-
-let bubble_radius = 30;
-let blur_radius = 30;
-let clickCount = 0;
-let clicks = [];
-let canvas = document.getElementById('canvas');
-
-bv.setup('img/test.jpg', 'canvas', bubble_radius, blur_radius, logClick);
-
-const img = new Image();
-img.onload = function () {
-    canvas.width = this.width;
-    canvas.height = this.height;
-}
-img.src = 'img/test.jpg';
-
-function logClick(log) {
-    clickCount++;
-    //$("#click-count").text(clickCount);
-    clicks.push(log);
-
-    //resetMonitoring();
+function imageFromURL(url, callback) {
+    image = new Image();
+    image.src = url;
+    image.onload = callback;
 }
 
-document.getElementById('btn_valider').onclick = function () {
-    console.log(clicks);
-};
+function resetBubbleView() {
+    bv.setup(current_image, 'canvas', bubble_radius, blur_radius, logClick);
+    clicks = [];
+    clickCount = 0;
+
+    // On adapate la taille du canvas à l'image
+    const img = new Image();
+    img.onload = function () {
+        canvas.width = this.width;
+        canvas.height = this.height;
+    }
+    img.src = current_image;
+}
