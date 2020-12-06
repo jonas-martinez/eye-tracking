@@ -10,6 +10,20 @@ fileSelector.addEventListener('change', (event) => {
     console.log(fileList);
 });
 
+function readImage(file, canvas) {
+    // Check if the file is an image.
+    if (file.type && file.type.indexOf('image') === -1) {
+        console.log('File is not an image.', file.type, file);
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.addEventListener('load', (event) => {
+        canvas.src = event.target.result;
+    });
+    reader.readAsDataURL(file);
+}
+
 /*
     BubbleView Part
 */
@@ -23,7 +37,7 @@ let canvas = document.getElementById('canvas');
 bv.setup('img/test.jpg', 'canvas', bubble_radius, blur_radius, logClick);
 
 const img = new Image();
-img.onload = function() {
+img.onload = function () {
     canvas.width = this.width;
     canvas.height = this.height;
 }
@@ -37,6 +51,6 @@ function logClick(log) {
     //resetMonitoring();
 }
 
-document.getElementById('btn_valider').onclick = function() {
+document.getElementById('btn_valider').onclick = function () {
     console.log(clicks);
 };
