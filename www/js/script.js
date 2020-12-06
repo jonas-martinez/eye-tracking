@@ -9,3 +9,14 @@ fileSelector.addEventListener('change', (event) => {
     const fileList = event.target.files;
     console.log(fileList);
 });
+
+bv.setup('img/sample1', 'canvas', 150, 150, logClick);
+
+function logClick(log) {
+    // clickCount++;
+    //$("#click-count").text(clickCount);
+    // console.log(log);
+    //clicks.push(log);
+
+    //resetMonitoring();
+}
