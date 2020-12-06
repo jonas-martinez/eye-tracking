@@ -6,4 +6,5 @@ Benchmark des outils d'eye tracking (WebGazer & BubbleView) : [Google Docs](http
 ### Sources pour le code
 
 Lecture d'images depuis la machine du client : [Link](https://web.dev/read-files/)
+
 Mise en place de BubbleView : [Link](https://github.com/turkeyes/bubbleview)
