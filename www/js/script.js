@@ -10,13 +10,33 @@ fileSelector.addEventListener('change', (event) => {
     console.log(fileList);
 });
 
-bv.setup('img/sample1', 'canvas', 150, 150, logClick);
+/*
+    BubbleView Part
+*/
+
+let bubble_radius = 30;
+let blur_radius = 30;
+let clickCount = 0;
+let clicks = [];
+let canvas = document.getElementById('canvas');
+
+bv.setup('img/test.jpg', 'canvas', bubble_radius, blur_radius, logClick);
+
+const img = new Image();
+img.onload = function() {
+    canvas.width = this.width;
+    canvas.height = this.height;
+}
+img.src = 'img/test.jpg';
 
 function logClick(log) {
-    // clickCount++;
+    clickCount++;
     //$("#click-count").text(clickCount);
-    // console.log(log);
-    //clicks.push(log);
+    clicks.push(log);
 
     //resetMonitoring();
 }
+
+document.getElementById('btn_valider').onclick = function() {
+    console.log(clicks);
+};
