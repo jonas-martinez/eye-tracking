@@ -29,6 +29,10 @@ const img = new Image();
 img.onload = function () {
     canvas.width = this.width;
     canvas.height = this.height;
+
+    let heatmap = document.getElementById("heatmap").getElementsByClassName("heatmap-canvas")[0];
+    heatmap.width = this.width;
+    heatmap.height = this.height;
 }
 img.src = current_image;
 
@@ -37,10 +41,20 @@ document.getElementById('btn_valider').onclick = function () {
     console.log(clicks);
 };
 
+var heatmapInstance = h337.create({
+    container: document.getElementById('heatmap'),
+    radius: 90
+});
+
 function logClick(log) {
     clickCount++;
     clicks.push(log);
 
+    heatmapInstance.addData({
+        x: log.cx,
+        y: log.cy,
+        value: 1
+    });
     //resetMonitoring();
 }
 
@@ -75,6 +89,10 @@ function resetBubbleView() {
     img.onload = function () {
         canvas.width = this.width;
         canvas.height = this.height;
+
+        let heatmap = document.getElementById("heatmap");
+        heatmap.width = this.width;
+        heatmap.height = this.height;
     }
     img.src = current_image;
 }
