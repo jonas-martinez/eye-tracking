@@ -13,7 +13,8 @@
     "keywords": [
         "eye-tracking"
     ],
-    "contributors": [{
+    "contributors": [
+        {
             "name": "Jonas MARTINEZ",
             "email": "cbobbxta.fr@gmail.com",
             "url": "https://github.com/jonas-martinez"
@@ -34,6 +35,7 @@
         "url": "https://github.com/jonas-martinez/eye-tracking/issues"
     },
     "dependencies": {
+        "bulma": "^0.9.1",
         "diff": "^5.0.0",
         "fs": "*",
         "heatmap.js": "^2.0.5",
