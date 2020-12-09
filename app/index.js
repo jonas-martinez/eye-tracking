@@ -1,8 +1,8 @@
 var http = require('http')
 var fs = require('fs')
 
-const address = '127.0.0.1';
-const port = 5050;
+const ADDRESS = '127.0.0.1';
+const PORT = 5050;
 
 fs.readFile('./app/html/index.html', function(err, html) {
     if (err) {
@@ -19,5 +19,7 @@ fs.readFile('./app/html/index.html', function(err, html) {
         }
 
         res.end();
-    }).listen(port, address);
+    }).listen(PORT, ADDRESS);
+
+    console.log('Server running at ' + ADDRESS + ':' + PORT);
 });
