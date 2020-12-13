@@ -1,0 +1,46 @@
+{
+    "name": "eye-tracking",
+    "version": "1.0.0",
+    "description": "Benchmark des outils d'eye tracking (WebGazer & BubbleView)",
+    "main": "./app/server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jonas-martinez/eye-tracking.git"
+    },
+    "keywords": [
+        "eye-tracking"
+    ],
+    "contributors": [
+        {
+            "name": "Jonas MARTINEZ",
+            "email": "cbobbxta.fr@gmail.com",
+            "url": "https://github.com/jonas-martinez"
+        },
+        {
+            "name": "Jihane BENMANSOUR",
+            "email": "benmansourjihane44@gmail.com",
+            "url": "https://github.com/BenJ44"
+        },
+        {
+            "name": "Mathis ANTELME",
+            "email": "mathis.antelme@gmail.com",
+            "url": "https://github.com/mathisantelme"
+        }
+    ],
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jonas-martinez/eye-tracking/issues"
+    },
+    "dependencies": {
+        "bulma": "^0.9.1",
+        "diff": "^5.0.0",
+        "fs": "*",
+        "heatmap.js": "^2.0.5",
+        "http": "*",
+        "nouislider": "^14.6.3",
+        "stackblur-canvas": "^2.4.0"
+    }
+}
