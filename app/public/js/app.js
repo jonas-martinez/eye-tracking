@@ -1,10 +1,9 @@
-var heatmap = require('heatmap.js')
+var heatmap = require('./heatmap.js')
 var bubbleView = require('./bubbleview.js')
 
 // var diff = require('diff')
 // var nouislider = require('nouislider')
 // var stackblur = require('stackblur-canvas')
-
 
 const fileSelector = document.getElementById('file-selector');
 fileSelector.addEventListener('change', (event) => {
