@@ -4,7 +4,7 @@
     "description": "Benchmark des outils d'eye tracking (WebGazer & BubbleView)",
     "main": "./app/server.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "mocha"
     },
     "repository": {
         "type": "git",
@@ -40,6 +40,7 @@
         "fs": "*",
         "heatmap.js": "^2.0.5",
         "http": "*",
+        "mocha": "^8.2.1",
         "nouislider": "^14.6.3",
         "stackblur-canvas": "^2.4.0"
     }
