@@ -6,7 +6,7 @@ const ADDRESS = '127.0.0.1';
 const PORT = 5050;
 
 // loading the main HTML page
-fs.readFile('./app/html/index.html', function(err, html) {
+fs.readFile('./app/html/index.html', function (err, html) {
 
     // if page not found or cannot be loaded, we log error
     if (err) {
@@ -14,7 +14,7 @@ fs.readFile('./app/html/index.html', function(err, html) {
     }
 
     // starting a server listening on address and port defined above
-    http.createServer(function(req, res) {
+    http.createServer(function (req, res) {
 
         // serving main page
         if (req.url === '/') {

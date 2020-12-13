@@ -34,7 +34,7 @@ bubbleView.setup(current_image, 'canvas', bubble_radius, blur_radius, logClick);
 
 // On adapate la taille du canvas à l'image
 const img = new Image();
-img.onload = function() {
+img.onload = function () {
     canvas.width = this.width;
     canvas.height = this.height;
 
@@ -45,7 +45,7 @@ img.onload = function() {
 img.src = current_image;
 
 // DEBUG
-document.getElementById('btn_valider').onclick = function() {
+document.getElementById('btn_valider').onclick = function () {
     console.log(clicks);
 };
 
@@ -94,7 +94,7 @@ function resetBubbleView() {
 
     // On adapate la taille du canvas à l'image
     const img = new Image();
-    img.onload = function() {
+    img.onload = function () {
         canvas.width = this.width;
         canvas.height = this.height;
 
