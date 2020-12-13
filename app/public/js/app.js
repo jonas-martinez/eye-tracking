@@ -1,5 +1,5 @@
-var heatmap = require('./heatmap.js')
-var bubbleView = require('./bubbleview.js')
+// var heatmap = require('./heatmap.js')
+// var bubbleView = require('./bubbleview.js')
 
 // var diff = require('diff')
 // var nouislider = require('nouislider')
@@ -29,7 +29,7 @@ let canvas = document.getElementById('canvas');
 let current_image = 'img/test.jpg';
 
 // On initialise le canvas avec bubbleview
-bubbleView.setup(current_image, 'canvas', bubble_radius, blur_radius, logClick);
+bv.setup(current_image, 'canvas', bubble_radius, blur_radius, logClick);
 
 // On adapate la taille du canvas à l'image
 const img = new Image();
@@ -48,7 +48,7 @@ document.getElementById('btn_valider').onclick = function () {
     console.log(clicks);
 };
 
-var heatmapInstance = heatmap.create({
+var heatmapInstance = h337.create({
     container: document.getElementById('heatmap'),
     radius: 90
 });
@@ -87,7 +87,7 @@ function imageFromURL(url, callback) {
 }
 
 function resetBubbleView() {
-    bubbleView.setup(current_image, 'canvas', bubble_radius, blur_radius, logClick);
+    bv.setup(current_image, 'canvas', bubble_radius, blur_radius, logClick);
     clicks = [];
     clickCount = 0;
 
