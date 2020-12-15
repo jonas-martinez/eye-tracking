@@ -43,6 +43,7 @@
         "http": "*",
         "mocha": "^8.2.1",
         "nouislider": "^14.6.3",
-        "stackblur-canvas": "^2.4.0"
+        "stackblur-canvas": "^2.4.0",
+        "webgazer": "^2.0.1"
     }
 }
