@@ -1,35 +1,21 @@
-var http = require('http')
-var fs = require('fs')
+var express = require('express');
+var path = require('path');
 
 // listening address and port
 const ADDRESS = '127.0.0.1';
 const PORT = 5050;
 
-// loading the main HTML page
-fs.readFile('./app/html/index.html', function(err, html) {
+var app = express();
 
-    // if page not found or cannot be loaded, we log error
-    if (err) {
-        console.error(err.message);
-    }
+app.use(express.static(path.join(__dirname, "public")));
 
-    // starting a server listening on address and port defined above
-    http.createServer(function(req, res) {
+app.get("/", function (req, res) {
+    res.sendFile(path.join(__dirname, "html/index.html"))
+});
 
-        // serving main page
-        if (req.url === '/') {
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.write(html);
-        }
-        // serving error page
-        else {
-            res.writeHead(404, { 'Content-Type': 'text/html' });
-            res.write('Not Found')
-        }
+var server = app.listen(PORT, function () {
+    var host = server.address().address;
+    var port = server.address().port;
 
-        res.end();
-    }).listen(PORT, ADDRESS);
-
-    // debug
-    console.log('Server running at ' + ADDRESS + ':' + PORT);
+    console.log("Server listening at http://%s:%s", host, port);
 });
