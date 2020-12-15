@@ -10,7 +10,11 @@ var app = express();
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "html/index.html"))
+    res.sendFile(path.join(__dirname, "html/index.html"));
+});
+
+app.get('/feedback', function (req, res) {
+    res.sendFile(path.join(__dirname, "html/experimentation_feedback.html"));
 });
 
 var server = app.listen(PORT, function () {
