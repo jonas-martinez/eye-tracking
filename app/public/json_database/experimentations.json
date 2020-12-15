@@ -1,10 +1,1 @@
-{
-    "index": 2,
-    "1": {
-        "title": "Example",
-        "description": "Example experimentation",
-        "creation_date": "2020-12-13T17:53:23.643Z",
-        "duration": 60,
-        "files_path": "example_2020_12_13_17_53"
-    }
-}
+{"1":{"title":"Example","description":"Example experimentation","creation_date":"2020-12-13T17:53:23.643Z","duration":60,"files_path":["example_2020_12_13_17_53"]},"2":{"title":"test","description":"test","duration":123,"files_path":["a","b","c"],"creation_date":"2020-12-15T15:26:37.259Z"},"3":{"title":"test","description":"test","duration":123,"files_path":["a","b","c"],"creation_date":"2020-12-15T15:26:57.250Z"},"4":{"title":"test","description":"test","duration":123,"files_path":["a","b","c"],"creation_date":"2020-12-15T15:26:59.638Z"},"5":{"title":"test","description":"test","duration":123,"files_path":["a","b","c"],"creation_date":"2020-12-15T15:27:15.412Z"},"6":{"title":"test","description":"test","duration":123,"files_path":["a","b","c"],"creation_date":"2020-12-15T15:27:37.978Z"},"index":7}
