@@ -14,7 +14,7 @@ function findGetParameter(parameterName) {
 function callGetAjax(url, callback) {
     var xmlhttp;
     xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function () { 
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             callback(xmlhttp.responseText);
         }
@@ -53,4 +53,3 @@ if (experimentation_id) {
         });
     }
 }
-

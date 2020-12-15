@@ -11,20 +11,18 @@
 
 ## Introduction
 
-This is a research projet firstt aimed at two points:
+This research project aims at creating a experimentation platform that provides means to create, share and represent experimentations and their results.
 
-- Gathering coordinates from eye-tracking analysis from specific hardware;
-- Providing an testing interface containing test images and a choice mechanism of such images; 
-
-Due to the current health context, we do note have access to eye-tracking hardware, therefore we will simulate such data input using [bubbleview](https://bubbleview.namwkim.org/). The user will be presented a blured image that can be discovered by clicking on it to reveal some of its parts to emulate an gaze path.
+Due to the current health context, we do note have access to eye-tracking hardware, therefore we will use the eye-tracking library called [Webgazer](https://github.com/brownhci/WebGazer) that provides all the tool to do some eye-tracking inside a web browser with a webcam.
 
 ## Technologies
 
 The technologies used for this project are as follows:
 
 - NodeJS v10.19.0
-- Bubbleview
 - NPM v6.14.9
+  - Webgazer v2.0.1
+  - Express v4.17.1
   - diff 5.0.0
   - heatmap 2.0.5
   - nouislider 14.6.3
@@ -49,8 +47,6 @@ Then it is only a matter of using NPM to install the required modules using this
 ```bash
 npm install
 ```
-
-At the time of writing this, Bubbleview doesn't provide a NPM module to use, therefore you will need to download the file `bubbleview.js` from their [github](https://github.com/namwkim/bubbleview) and put in the `app/js/` folder.
 
 ## Launch
 
