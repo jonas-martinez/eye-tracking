@@ -37,7 +37,7 @@ function callPostAjax(url, data, callback) {
 
 function createExperimentation(title, description, duration, files_path) {
     let params = {title: title, description: description, duration: duration, files_path: files_path};
-    callPostAjax('createExperimentation', params, function(data){
+    callPostAjax('api/createExperimentation', params, function(data){
         console.log(data);
     });
 }
