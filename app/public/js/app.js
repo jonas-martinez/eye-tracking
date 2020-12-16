@@ -132,9 +132,13 @@ if (page.dataset['title'] === 'results') {
     let experimentation_submit_button = document.getElementById('experimentation_submit_button');
 
     experimentation_submit_button.onclick = function() {
-        console.log(experimentation_title.value);
-        console.log(experimentation_description.value);
-        console.log(experimentation_duration.value);
-        console.log(experimentation_submit_button);
+        let title = experimentation_title.value;
+        let description = experimentation_description.value;
+        let duration = experimentation_duration.value;
+        let files = ['test'];
+
+        createExperimentation(title, description, duration, files, function(data){
+            console.log(data);
+        });
     }
 }
