@@ -141,4 +141,13 @@ if (page.dataset['title'] === 'results') {
             console.log(data);
         });
     }
+} else if (page.dataset['title'] === 'do_experimentation') {
+    let id = findGetParameter('id');
+
+    if(id) {
+        console.log(id);
+        getExperimentation(id, function(data){
+            console.log(data);
+        });
+    }
 }
