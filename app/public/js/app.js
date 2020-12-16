@@ -35,11 +35,29 @@ function callPostAjax(url, data, callback) {
     xhttp.send(JSON.stringify(data));
 }
 
-function createExperimentation(title, description, duration, files_path) {
+function createExperimentation(title, description, duration, files_path, callback) {
     let params = { title: title, description: description, duration: duration, files_path: files_path };
-    callPostAjax('api/createExperimentation', params, function (data) {
-        console.log(data);
-    });
+    callPostAjax('api/createExperimentation', params, callback);
+}
+
+function getExperimentations(callback) {
+    callGetAjax('api/getExperimentations', callback);
+}
+
+function getExperimentation(id, callback) {
+    callGetAjax('api/getExperimentation/' + id, callback);
+}
+
+function deleteExperimentation(id, callback) {
+    callGetAjax('api/deleteExperimentation/' + id, callback);
+}
+
+function getExperimentationsResults(callback) {
+    callGetAjax('api/getExperimentationsResults', callback);
+}
+
+function getExperimentationResults(id, callback) {
+    callGetAjax('api/getExperimentationResults/' + id, callback);
 }
 
 //createExperimentation('test', 'test', 123, ['a', 'b', 'c']);
@@ -57,8 +75,7 @@ function createExperimentation(title, description, duration, files_path) {
 let page = document.getElementsByTagName('body')[0];
 
 if (page.dataset['title'] === 'results') {
-    callGetAjax('api/getExperimentationsResults', function (data) {
-        let json_data = JSON.parse(data);
-        console.log(json_data);
+    getExperimentationsResults(function (data) {
+        console.log(data);
     });
 }
