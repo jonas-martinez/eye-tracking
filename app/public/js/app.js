@@ -65,6 +65,16 @@ function createExperimentation(title, description, duration, files_path, callbac
 }
 
 /**
+ * Permet d'ajouter des résultats à une expérimentation.
+ * @param {Number} id 
+ * @param {Array} results 
+ * @param {Function} callback 
+ */
+function addResultsToExperimentation(id, results, callback){
+    callPostAjax('api/addResultsToExperimentation/' + id, results, callback);
+}
+
+/**
  * Permet de récupérer toutes les expérimentations au format JSON.
  * @param {Function} callback 
  */
@@ -106,18 +116,6 @@ function getExperimentationsResults(callback) {
 function getExperimentationResults(id, callback) {
     callGetAjax('api/getExperimentationResults/' + id, callback);
 }
-
-//createExperimentation('test', 'test', 123, ['a', 'b', 'c']);
-
-// let experimentation_id = findGetParameter('id');
-// if (experimentation_id) {
-//     if (/^[1-9]\d*$/.test(experimentation_id)) {
-//         callGetAjax('json_database/experimentations_results.json', function (data) {
-//             let experimentation_data = JSON.parse(data);
-//             console.log(experimentation_data[experimentation_id]);
-//         });
-//     }
-// }
 
 let page = document.getElementsByTagName('body')[0];
 
@@ -163,7 +161,34 @@ if (page.dataset['title'] === 'results') {
                 document.getElementById('experimentation_infos').style.display = 'none';
                 document.getElementById('doing_experimentation').style.display = 'block';
 
-                
+                let experimentation_data = [];
+
+                webgazer.setGazeListener(function (data, elapsedTime) {
+                    if (data == null) {
+                        return;
+                    }
+                    var xprediction = data.x; 
+                    var yprediction = data.y; 
+                    //console.log(elapsedTime); 
+                    if(elapsedTime > experimentation_JSON['duration']*100){
+                        webgazer.end();
+                        console.log(experimentation_data);
+                        addResultsToExperimentation(id, experimentation_data, function(data){
+                            console.log(data);
+                        });
+                    }
+
+                    experimentation_data.push({
+                        x: data.x,
+                        y: data.y,
+                        elapsedTime: elapsedTime
+                    });
+                }).begin();
+
+                webgazer.showVideo(false);
+                webgazer.showFaceOverlay(false);
+                webgazer.showFaceFeedbackBox(false);
+                webgazer.showPredictionPoints(true);
             }
         });
     }

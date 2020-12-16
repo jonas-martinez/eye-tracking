@@ -43,6 +43,26 @@ app.post('/api/createExperimentation', function (req, res) {
     res.sendFile(path.join(__dirname, 'public/json_database/experimentations.json'));
 });
 
+app.post('/api/addResultsToExperimentation/:id', function(req, res) {
+    let id = req.params.id;
+    let results = req.body;
+    let final_results = {
+        date: (new Date()).toJSON(),
+        positions: results
+    };
+
+    let experimentation_r_db_raw = fs.readFileSync(path.join(__dirname, 'public/json_database/experimentations_results.json'));
+    let experimentation_r_db = JSON.parse(experimentation_r_db_raw);
+
+    if (experimentation_r_db.hasOwnProperty(id)) {
+        experimentation_r_db[id].push(final_results);
+        fs.writeFileSync(path.join(__dirname, 'public/json_database/experimentations_results.json'), JSON.stringify(experimentation_r_db));
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(400);
+    }
+});
+
 app.get('/api/getExperimentations', function (req, res) {
     res.sendFile(path.join(__dirname, 'public/json_database/experimentations.json'));
 });
