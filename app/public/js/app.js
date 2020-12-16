@@ -160,7 +160,10 @@ if (page.dataset['title'] === 'results') {
             duration.innerHTML = experimentation_JSON['duration'] + " secondes";
 
             start_btn.onclick = function () {
+                document.getElementById('experimentation_infos').style.display = 'none';
+                document.getElementById('doing_experimentation').style.display = 'block';
 
+                
             }
         });
     }
