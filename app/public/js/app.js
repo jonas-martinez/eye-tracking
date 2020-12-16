@@ -125,4 +125,16 @@ if (page.dataset['title'] === 'results') {
     getExperimentationsResults(function (data) {
         console.log(data);
     });
+} else if (page.dataset['title'] === 'creation') {
+    let experimentation_title = document.getElementById('experimentation_title');
+    let experimentation_description = document.getElementById('experimentation_description');
+    let experimentation_duration = document.getElementById('experimentation_duration');
+    let experimentation_submit_button = document.getElementById('experimentation_submit_button');
+
+    experimentation_submit_button.onclick = function() {
+        console.log(experimentation_title.value);
+        console.log(experimentation_description.value);
+        console.log(experimentation_duration.value);
+        console.log(experimentation_submit_button);
+    }
 }
