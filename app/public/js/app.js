@@ -131,23 +131,37 @@ if (page.dataset['title'] === 'results') {
     let experimentation_duration = document.getElementById('experimentation_duration');
     let experimentation_submit_button = document.getElementById('experimentation_submit_button');
 
-    experimentation_submit_button.onclick = function() {
+    experimentation_submit_button.onclick = function () {
         let title = experimentation_title.value;
         let description = experimentation_description.value;
         let duration = experimentation_duration.value;
         let files = ['test'];
 
-        createExperimentation(title, description, duration, files, function(data){
+        createExperimentation(title, description, duration, files, function (data) {
             console.log(data);
         });
     }
 } else if (page.dataset['title'] === 'do_experimentation') {
     let id = findGetParameter('id');
 
-    if(id) {
-        console.log(id);
-        getExperimentation(id, function(data){
+    if (id) {
+        getExperimentation(id, function (data) {
             console.log(data);
+            let experimentation_JSON = JSON.parse(data);
+
+            let title = document.getElementById('title');
+            let description = document.getElementById('description');
+            let duration = document.getElementById('duration');
+
+            let start_btn = document.getElementById('do_experimentation_btn');
+
+            title.innerHTML = experimentation_JSON['title'];
+            description.innerHTML = experimentation_JSON['description'];
+            duration.innerHTML = experimentation_JSON['duration'] + " secondes";
+
+            start_btn.onclick = function () {
+
+            }
         });
     }
 }
