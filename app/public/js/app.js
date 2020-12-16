@@ -125,4 +125,26 @@ if (page.dataset['title'] === 'results') {
     getExperimentationsResults(function (data) {
         console.log(data);
     });
-}
+} else if (page.dataset['title'] === 'index') {
+    let experimentation_data = [];
+
+    webgazer.setGazeListener(function (data, elapsedTime) {
+        if (data == null) {
+            return;
+        }
+        var xprediction = data.x; //these x coordinates are relative to the viewport
+        var yprediction = data.y; //these y coordinates are relative to the viewport
+        console.log(elapsedTime); //elapsed time is based on time since begin was called
+
+        experimentation_data.push({
+            x: data.x,
+            y: data.y,
+            elapsedTime: elapsedTime
+        });
+    }).begin();
+
+    webgazer.showVideo(false);
+    webgazer.showFaceOverlay(false);
+    webgazer.showFaceFeedbackBox(false);
+    webgazer.showPredictionPoints(true);
+}    
