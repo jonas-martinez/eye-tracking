@@ -1,16 +1,26 @@
+/**
+ * Permet de trouver la valeur du paramètre donné dans une URL.
+ * @param {String} parameterName Le nom du paramètre.
+ * @return {String} La valeur du paramètre.
+ */
 function findGetParameter(parameterName) {
-    var result = null,
-        tmp = [];
-    location.search
-        .substr(1)
-        .split("&")
-        .forEach(function (item) {
-            tmp = item.split("=");
-            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-        });
+    var result = null, tmp = [];
+
+    location.search.substr(1).split("&").forEach(function (item) {
+        tmp = item.split("=");
+        if (tmp[0] === parameterName) {
+            result = decodeURIComponent(tmp[1]);
+        }
+    });
+
     return result;
 }
 
+/**
+ * Permet de faire une requête GET vers une URL, le callback est utilisé pour gérer les données retournées.
+ * @param {String} url 
+ * @param {Function} callback 
+ */
 function callGetAjax(url, callback) {
     var xmlhttp;
     xmlhttp = new XMLHttpRequest();
@@ -23,6 +33,12 @@ function callGetAjax(url, callback) {
     xmlhttp.send();
 }
 
+/**
+ * Permet de faire une requête POST vers une URL, le callback est utilisé pour gérer les données retournées.
+ * @param {String} url 
+ * @param {JSON} data Les données à envoyer au format JSON.
+ * @param {Function} callback 
+ */
 function callPostAjax(url, data, callback) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, true);
@@ -35,27 +51,58 @@ function callPostAjax(url, data, callback) {
     xhttp.send(JSON.stringify(data));
 }
 
+/**
+ * Permet de créer une expérimentation.
+ * @param {String} title Le titre de l'expérimentation.
+ * @param {String} description La description de l'expérimentation.
+ * @param {Number} duration La durée de l'expérimentation.
+ * @param {Array<String>} files_path La liste des chemins des fichiers de l'expérimentation.
+ * @param {Function} callback 
+ */
 function createExperimentation(title, description, duration, files_path, callback) {
     let params = { title: title, description: description, duration: duration, files_path: files_path };
     callPostAjax('api/createExperimentation', params, callback);
 }
 
+/**
+ * Permet de récupérer toutes les expérimentations au format JSON.
+ * @param {Function} callback 
+ */
 function getExperimentations(callback) {
     callGetAjax('api/getExperimentations', callback);
 }
 
+/**
+ * Permet de récupérer une expérimentation depuis son id.
+ * @param {Number} id 
+ * @param {Function} callback 
+ */
 function getExperimentation(id, callback) {
     callGetAjax('api/getExperimentation/' + id, callback);
 }
 
+/**
+ * Permet de supprimer une expérimentation depuis son id.
+ * @param {Number} id 
+ * @param {Function} callback 
+ */
 function deleteExperimentation(id, callback) {
     callGetAjax('api/deleteExperimentation/' + id, callback);
 }
 
+/**
+ * Permet de récupérer tous les résultats des expérimentations.
+ * @param {Function} callback 
+ */
 function getExperimentationsResults(callback) {
     callGetAjax('api/getExperimentationsResults', callback);
 }
 
+/**
+ * Permet de récupérer tous les résultats d'une expérimentation depuis son id.
+ * @param {Number} id 
+ * @param {Function} callback 
+ */
 function getExperimentationResults(id, callback) {
     callGetAjax('api/getExperimentationResults/' + id, callback);
 }
